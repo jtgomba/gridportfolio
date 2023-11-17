@@ -4,6 +4,7 @@ export default function Home() {
       <a
         className='col-[1_/_2] row-[1_/_span_2] inline-block self-center justify-self-center text-[3rem] font-bold no-underline'
         aria-label='Wave logo homepage'
+        href='#'
       >
         ~
       </a>
@@ -18,15 +19,15 @@ export default function Home() {
         Links
       </nav>
       <div className='line line--vertical col-[2_/_3] row-[5_/_6]'>
-        <div className='font-dystopian block px-[0] text-[1.5rem] font-bold leading-none'>
+        <div className='block px-[0] font-dystopian text-[1.5rem] font-bold leading-none'>
           <div className='overflow-hidden'>
-            <div className='font-dystopian block rotate-180 text-[12vh] font-bold leading-none [writing-mode:vertical-lr]'>
+            <div className='block rotate-180 font-dystopian text-[12vh] font-bold leading-none [writing-mode:vertical-lr]'>
               Menu
             </div>
           </div>
         </div>
       </div>
-      <h1 className='font-dystopian line line--horizontal col-[4_/_span_5] row-[3_/_4] m-0 grid overflow-hidden text-[11.25vw] font-bold leading-[0.9] [text-indent:-0.9vw]'>
+      <h1 className='line line--horizontal col-[4_/_span_5] row-[3_/_4] m-0 grid overflow-hidden font-dystopian text-[11.25vw] font-bold leading-[0.9] [text-indent:-0.9vw]'>
         <div>Insomnia</div>
       </h1>
       <div className='col-[5_/_5] row-[4_/_5] overflow-hidden text-[4vw] font-extralight leading-none [text-indent:-0.4vw]'>
