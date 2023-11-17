@@ -1,112 +1,61 @@
-import Image from 'next/image';
-
 export default function Home() {
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex'>
-        <p className='fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30'>
-          Get started by editing&nbsp;
-          <code className='font-mono font-bold'>src/app/page.tsx</code>
-        </p>
-        <div className='fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none'>
-          <a
-            className='pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0'
-            href='https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            By{' '}
-            <Image
-              src='/vercel.svg'
-              alt='Vercel Logo'
-              className='dark:invert'
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className='grid h-screen grid-cols-[8rem_12vh_9rem_1fr_1fr] grid-rows-[4rem_4rem_min-content_min-content_1fr_2.5rem] overflow-hidden p-0 text-left text-sm'>
+      <a
+        className='col-[1_/_2] row-[1_/_span_2] inline-block self-center justify-self-center text-[3rem] font-bold no-underline'
+        aria-label='Wave logo homepage'
+      >
+        ~
+      </a>
+      <h2 className='line line--vertical relative col-[4_/_5] row-[1_/_2] m-0 px-[0] py-4 text-[1rem] font-semibold'>
+        Welcome to. . .
+      </h2>
+      <nav className='line line--horizontal col-[4_/_5] row-[2_/_3] overflow-hidden pt-4'>
+        Demos
+      </nav>
+      <nav className='line line--horizontal col-[5_/_6] row-[2_/_3] overflow-hidden pt-4'></nav>
+      <nav className='line line--vertical col-[5_/_6] row-[2_/_3] pt-4'>
+        Links
+      </nav>
+      <div className='line line--vertical col-[2_/_3] row-[5_/_6]'>
+        <div className='font-dystopian block px-[0] text-[1.5rem] font-bold leading-none'>
+          <div className='overflow-hidden'>
+            <div className='font-dystopian block rotate-180 text-[12vh] font-bold leading-none [writing-mode:vertical-lr]'>
+              Menu
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className='relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert'
-          src='/next.svg'
-          alt='Next.js Logo'
-          width={180}
-          height={37}
-          priority
-        />
+      <h1 className='font-dystopian line line--horizontal col-[4_/_span_5] row-[3_/_4] m-0 grid overflow-hidden text-[11.25vw] font-bold leading-[0.9] [text-indent:-0.9vw]'>
+        <div>Insomnia</div>
+      </h1>
+      <div className='col-[5_/_5] row-[4_/_5] overflow-hidden text-[4vw] font-extralight leading-none [text-indent:-0.4vw]'>
+        <div>records</div>
       </div>
-
-      <div className='mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left'>
-        <a
-          href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <p className='line line--horizontal text-[clamp(1rem, 2vh, 3rem)] col-[4_/_5] row-[5_/_6] m-0 text-[1.15rem]'>
+        <span className='block'>
+          The main reliance, however, in the Emmanuel treatment is on faith,
+          reinforced first by hetero-suggestion and then by patient and
+          persistent auto-suggestion. The man who would be permanently free from
+          insomnia must be an optimist. He must have a philosophy of life
+          wholesome enough to keep him buoyant, cheerful, and serene amid all
+          the changes and the chances of this mortal life.
+        </span>
+      </p>
+      <span
+        className='col-[5_/_6] row-[5_/_6] inline-block cursor-default self-center justify-self-center text-[12vw]'
+        aria-label='Play'
+      >
+        &#9658;
+      </span>
+      <span className='line line--vertical col-[3_/_4] row-[6_/_7] font-semibold no-underline'>
+        <div className='credits--site-inner oh'></div>
+      </span>
+      <span className='line line--horizontal col-[4_/_5] row-[6_/_7]'>
+        <div className='inline-block overflow-hidden'>Joel Gomba</div>
+      </span>
+      <div className='col-[1_/_2] row-[6_/_7] overflow-hidden'>
+        <div>2023</div>
       </div>
     </main>
   );
