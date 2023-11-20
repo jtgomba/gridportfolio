@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
+import horizontalLoop from '@/animations/horizontalLoop';
 
 export default function Home() {
   const tl = useRef(
@@ -15,18 +16,13 @@ export default function Home() {
   useEffect(() => {
     let ctx = gsap.context(() => {
       tl.current
-        .fromTo(
+        .to('body', {
+          duration: 2,
+          '--horizontal-transform': 'translateX(-34%)',
+          stagger: 0.1,
+        })
+        .to(
           'body',
-          { '--horizontal-transform': 'translateX(-100%)' },
-          {
-            duration: 2,
-            '--horizontal-transform': 'translateX(-34%)',
-            stagger: 0.1,
-          }
-        )
-        .fromTo(
-          'body',
-          { '--vertical-transform': 'translateY(-100%)' },
           {
             duration: 2,
             '--vertical-transform': 'translateY(-30%)',
@@ -35,11 +31,10 @@ export default function Home() {
           '<'
         )
         .to(
-          '[data-title], [data-subtitle]',
+          '[data-title]',
           {
             duration: 2,
             xPercent: 100,
-            stagger: 0.1,
           },
           '-=1.5'
         )
@@ -69,9 +64,16 @@ export default function Home() {
           {
             duration: 1,
             opacity: 1,
+            delay: 0.5,
           },
           '<'
-        );
+        )
+        .set('[data-title]', {
+          css: { transform: 'translate(0px, 0px)' },
+        })
+        .set('[data-menu]', {
+          css: { transform: 'rotate(180deg) skew(360deg, 0deg)' },
+        });
     });
 
     return () => {
@@ -79,8 +81,22 @@ export default function Home() {
     };
   }, []);
 
+  const slider = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context((self) => {
+      const slides = gsap.utils.toArray('.slide');
+      const loop = horizontalLoop(slides, {
+        speed: 0.75,
+        repeat: -1,
+        paddingRight: 24,
+      });
+    }, slider);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <main className='grid h-screen grid-cols-[8rem_12vh_9rem_1fr_1fr] grid-rows-[4rem_4rem_min-content_min-content_1fr_2.5rem] overflow-hidden p-0 text-left text-sm'>
+    <main className='grid h-screen grid-cols-[8rem_12vh_9rem_1fr_1fr] grid-rows-[4rem_4rem_min-content_min-content_1fr_2.5rem] overflow-hidden text-left text-sm'>
       <a
         className='col-[1_/_2] row-[1_/_span_2] inline-block self-center justify-self-center text-[3rem] font-bold no-underline opacity-0'
         aria-label='Wave logo homepage'
@@ -91,16 +107,8 @@ export default function Home() {
       </a>
       <h2
         data-op
-        className='line line--vertical relative col-[4_/_5] row-[1_/_2] m-0 px-[0] py-4 text-[1rem] font-semibold'
-      >
-        {/* Welcome to. . . */}
-      </h2>
-      {/* <nav
-        data-op
-        className='line line--horizontal col-[4_/_5] row-[2_/_3] overflow-hidden pt-4'
-      >
-        Demos
-      </nav> */}
+        className='line line--vertical relative col-[4_/_5] row-[1_/_2] text-[1rem] font-semibold'
+      ></h2>
       <nav className='line line--horizontal col-[5_/_6] row-[1_/_span_2] grid overflow-hidden'>
         <ul
           data-op
@@ -113,7 +121,7 @@ export default function Home() {
       </nav>
       <nav
         data-op
-        className='line line--vertical col-[5_/_6] row-[2_/_3] pt-4 opacity-0'
+        className='line line--vertical col-[5_/_6] row-[2_/_3] opacity-0'
       ></nav>
       <div className='line line--vertical col-[2_/_3] row-[5_/_6]'>
         <div className='font-dystopian block px-[0] text-[1.5rem] font-bold leading-none'>
@@ -122,39 +130,45 @@ export default function Home() {
               data-menu
               className='font-dystopian block translate-y-[-100%] rotate-180 self-center text-[8vh] font-bold leading-none [writing-mode:vertical-lr]'
             >
-              Developer
+              Engineer
             </div>
           </div>
         </div>
       </div>
       <div className='line line--horizontal col-[4_/_span_5] row-[3_/_4]'></div>
-      <h1 className='font-dystopian col-[4_/_span_5] row-[3_/_4] m-0 grid overflow-hidden text-[11.25vw] font-bold leading-[0.9] [text-indent:-0.9vw]'>
+      <h1 className='font-dystopian col-[4_/_span_5] row-[3_/_4] m-0 grid overflow-hidden text-[8.25vw] font-bold leading-[0.9]'>
         <div
           data-title
           className='translate-x-[-100%]'
         >
-          Insomnia
+          Joel Gomba
         </div>
       </h1>
-      <div className='col-[5_/_5] row-[4_/_5] overflow-hidden text-[4vw] font-extralight leading-none [text-indent:-0.4vw]'>
-        <div
-          data-subtitle
-          className='translate-x-[-100%]'
-        >
-          records
+      <div className='col-[5_/_5] row-[4_/_5] overflow-hidden text-[2vw] font-extralight leading-none [text-indent:-0.2vw]'>
+        <div className='w-[700px] overflow-hidden'>
+          <div
+            data-op
+            className='slider flex w-[2300px] gap-6 opacity-0'
+            ref={slider}
+          >
+            <div className='slide'>Fullstack Developer</div>
+            <div className='slide'>Fullstack Developer</div>
+            <div className='slide'>Fullstack Developer</div>
+            <div className='slide'>Fullstack Developer</div>
+          </div>
         </div>
       </div>
-      <p className='line line--horizontal text-[clamp(1rem, 2vh, 3rem)] col-[4_/_5] row-[5_/_6] m-0 text-base'>
+      <p className='line line--horizontal text-[clamp(1rem, 2vh, 3rem)] col-[4_/_5] row-[5_/_6] m-0 text-xl'>
         <span
           data-op
           className='block opacity-0'
         >
-          The main reliance, however, in the Emmanuel treatment is on faith,
-          reinforced first by hetero-suggestion and then by patient and
-          persistent auto-suggestion. The man who would be permanently free from
-          insomnia must be an optimist. He must have a philosophy of life
-          wholesome enough to keep him buoyant, cheerful, and serene amid all
-          the changes and the chances of this mortal life.
+          I&apos;m a skilled software developer with experience in TypeScript
+          and JavaScript, and expertise in frameworks like React, Node.js, and
+          Three.js. I&apos;m a quick learner and collaborate closely with
+          clients to create efficient, scalable, and user-friendly solutions
+          that solve real-world problems. Let&apos;s work together to bring your
+          ideas to life!
         </span>
       </p>
       <span
@@ -167,15 +181,7 @@ export default function Home() {
       <span className='line line--vertical col-[3_/_4] row-[6_/_7] font-semibold no-underline'>
         <div className='credits--site-inner oh'></div>
       </span>
-      <span className='line line--horizontal col-[4_/_5] row-[6_/_7]'>
-        <div
-          data-op
-          className='inline-block overflow-hidden opacity-0'
-        >
-          Joel Gomba
-        </div>
-      </span>
-      <div className='col-[1_/_2] row-[6_/_7] overflow-hidden'>
+      <div className='col-[1_/_2] row-[6_/_7] flex items-center justify-center overflow-hidden'>
         <div
           data-op
           className='opacity-0'
@@ -183,6 +189,22 @@ export default function Home() {
           2023
         </div>
       </div>
+      <span className='line line--horizontal col-[4_/_5] row-[6_/_7]'>
+        <div
+          data-op
+          className='inline-block overflow-hidden opacity-0'
+        ></div>
+      </span>
+      <span className='line line--horizontal col-[5_/_6] row-[6_/_7]'>
+        <ul
+          data-op
+          className='flex h-full w-full flex-row items-center justify-evenly gap-3 self-center justify-self-center text-lg opacity-0'
+        >
+          <li>Github</li>
+          <li>LinkedIn</li>
+          <li>Twitter</li>
+        </ul>
+      </span>
     </main>
   );
 }

@@ -162,3 +162,12 @@ main::before {
   @apply left-[-250vw] top-0 h-px w-[500vw];
   transform: var(--horizontal-transform);
 }
+
+.after-line--vertical::after {
+  @apply left-0 top-[-250vh] h-[500vh] w-px;
+  transform: var(--vertical-transform);
+}
+.after-line--horizontal::after {
+  @apply left-[-250vw] top-0 h-px w-[500vw];
+  transform: var(--horizontal-transform);
+}
