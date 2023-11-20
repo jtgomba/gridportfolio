@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
+import GridLayout from '@/components/GridLayout';
 
 export const metadata: Metadata = {
   title: 'Joel Gomba',
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className='font-termina'>{children}</body>
+      <body className='font-termina'>
+        <GridLayout>{children}</GridLayout>
+      </body>
     </html>
   );
 }
