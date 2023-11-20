@@ -68,6 +68,16 @@ const About = () => {
           What to know
         </div>
       </h1>
+      <div className='overflow-hidden text-[2vw] font-extralight leading-none [grid-area:subtitle] [text-indent:-0.2vw]'>
+        <div className='w-[700px] overflow-hidden'>
+          <div
+            data-op
+            className='slider flex w-[2300px] gap-6 opacity-0'
+          >
+            <div className='slide'>Learn a little about me</div>
+          </div>
+        </div>
+      </div>
       <p className='line line--horizontal text-[clamp(1rem, 2vh, 3rem)] m-0 text-xl [grid-area:content]'>
         <span
           data-op
