@@ -10,7 +10,7 @@ export default function Home() {
   useLayoutEffect(() => {
     const ctx = gsap.context((self) => {
       const slides = gsap.utils.toArray('.slide');
-      const loop = horizontalLoop(slides, {
+      horizontalLoop(slides, {
         speed: 0.75,
         repeat: -1,
         paddingRight: 24,
