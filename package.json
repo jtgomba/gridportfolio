@@ -13,12 +13,16 @@
     "test": "npm run prettier && npm run lint && npm run build && npm run start"
   },
   "dependencies": {
+    "@react-three/drei": "^9.88.17",
+    "@react-three/fiber": "^8.15.11",
+    "@types/three": "^0.158.3",
     "clsx": "^2.0.0",
     "gsap": "^3.12.2",
-    "next": "14.0.3",
+    "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.0.0",
+    "three": "^0.158.0",
     "zustand": "^4.4.6"
   },
   "devDependencies": {
