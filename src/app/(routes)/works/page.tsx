@@ -32,6 +32,15 @@ const Works = () => {
             },
             '-=1.5'
           )
+          .to(
+            '[data-op]',
+            {
+              duration: 1,
+              opacity: 1,
+              delay: 0.5,
+            },
+            '<'
+          )
           .set('[data-title]', {
             css: { transform: 'translate(0px, 0px)' },
           })
