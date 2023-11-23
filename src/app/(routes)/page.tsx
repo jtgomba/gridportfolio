@@ -1,22 +1,90 @@
 'use client';
 
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useEffect } from 'react';
 import { gsap } from 'gsap';
+
 import horizontalLoop from '@/animations/horizontalLoop';
+import { useStore, StoreState } from '@/hooks/Store';
 
 export default function Home() {
+  const { started } = useStore((state: StoreState) => state);
+
+  const tl = useRef(
+    gsap.timeline({
+      defaults: {
+        ease: 'power3.inOut',
+      },
+    })
+  );
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      if (started === true) {
+        tl.current
+          .to(
+            '[data-title]',
+            {
+              duration: 2,
+              xPercent: 100,
+            },
+            '-=0.25'
+          )
+          .to(
+            '[data-menu]',
+            {
+              duration: 1.5,
+              yPercent: 100,
+            },
+            '-=1.5'
+          )
+          .fromTo(
+            '[data-play]',
+            {
+              scale: 0,
+              rotate: '-62deg',
+            },
+            {
+              duration: 1,
+              scale: 1,
+              rotate: '0deg',
+            },
+            '-=1.5'
+          )
+          .to(
+            '[data-op]',
+            {
+              duration: 1,
+              opacity: 1,
+              delay: 0.5,
+            },
+            '<'
+          )
+          .set('[data-title]', {
+            css: { transform: 'translate(0px, 0px)' },
+          })
+          .set('[data-menu]', {
+            css: { transform: 'rotate(180deg) skew(360deg, 0deg)' },
+          });
+      }
+    });
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   const slider = useRef(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context((self) => {
-      const slides = gsap.utils.toArray('.slide');
-      horizontalLoop(slides, {
-        speed: 0.75,
-        repeat: -1,
-        paddingRight: 24,
-      });
-    }, slider);
-    return () => ctx.revert();
+    // const ctx = gsap.context((self) => {
+    //   const slides = gsap.utils.toArray('.slide');
+    //   horizontalLoop(slides, {
+    //     speed: 0.75,
+    //     repeat: -1,
+    //     paddingRight: 24,
+    //   });
+    // }, slider);
+    // return () => ctx.revert();
   }, []);
 
   return (
@@ -49,9 +117,9 @@ export default function Home() {
             ref={slider}
           >
             <div className='slide'>Fullstack Developer</div>
+            {/* <div className='slide'>Fullstack Developer</div>
             <div className='slide'>Fullstack Developer</div>
-            <div className='slide'>Fullstack Developer</div>
-            <div className='slide'>Fullstack Developer</div>
+            <div className='slide'>Fullstack Developer</div> */}
           </div>
         </div>
       </div>

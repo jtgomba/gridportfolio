@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 import { useStore, StoreState } from '@/hooks/Store';
+import Form from './components/form';
 
 const Contact = () => {
   const started = useStore((state: StoreState) => state.started);
@@ -20,10 +21,14 @@ const Contact = () => {
     let ctx = gsap.context(() => {
       if (started === true) {
         tl.current
-          .to('[data-title]', {
-            duration: 2,
-            xPercent: 100,
-          })
+          .to(
+            '[data-title]',
+            {
+              duration: 2,
+              xPercent: 100,
+            },
+            '-=0.25'
+          )
           .to(
             '[data-menu]',
             {
@@ -38,6 +43,14 @@ const Contact = () => {
               duration: 1,
               opacity: 1,
               delay: 0.5,
+            },
+            '<'
+          )
+          .from(
+            '[data-play]',
+            {
+              duration: 1,
+              opacity: 0,
             },
             '<'
           )
@@ -87,19 +100,14 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <p className='line line--horizontal text-[clamp(1rem, 2vh, 3rem)] m-0 text-xl [grid-area:content]'>
-        <span
+      <div className='line line--horizontal text-[clamp(1rem, 2vh, 3rem)] m-0 text-xl [grid-area:content]'>
+        <div
           data-op
           className='block opacity-0'
         >
-          {/* I&apos;m a skilled software developer with experience in TypeScript
-          and JavaScript, and expertise in frameworks like React, Node.js, and
-          Three.js. I&apos;m a quick learner and collaborate closely with
-          clients to create efficient, scalable, and user-friendly solutions
-          that solve real-world problems. Let&apos;s work together to bring your
-          ideas to life! */}
-        </span>
-      </p>
+          <Form />
+        </div>
+      </div>
     </>
   );
 };

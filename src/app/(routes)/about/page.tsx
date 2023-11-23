@@ -2,8 +2,10 @@
 
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 import { useStore, StoreState } from '@/hooks/Store';
+import funny from '@/assets/project_images/funny.jpg';
 
 const About = () => {
   const started = useStore((state: StoreState) => state.started);
@@ -20,10 +22,14 @@ const About = () => {
     let ctx = gsap.context(() => {
       if (started === true) {
         tl.current
-          .to('[data-title]', {
-            duration: 2,
-            xPercent: 100,
-          })
+          .to(
+            '[data-title]',
+            {
+              duration: 2,
+              xPercent: 100,
+            },
+            '-=0.25'
+          )
           .to(
             '[data-menu]',
             {
@@ -38,6 +44,14 @@ const About = () => {
               duration: 1,
               opacity: 1,
               delay: 0.5,
+            },
+            '<'
+          )
+          .from(
+            '[data-play]',
+            {
+              duration: 1,
+              opacity: 0,
             },
             '<'
           )
@@ -92,14 +106,28 @@ const About = () => {
           data-op
           className='block opacity-0'
         >
-          {/* I&apos;m a skilled software developer with experience in TypeScript
+          I&apos;m a skilled software developer with experience in TypeScript
           and JavaScript, and expertise in frameworks like React, Node.js, and
           Three.js. I&apos;m a quick learner and collaborate closely with
           clients to create efficient, scalable, and user-friendly solutions
           that solve real-world problems. Let&apos;s work together to bring your
-          ideas to life! */}
+          ideas to life!
         </span>
       </p>
+      <div
+        className='h-full w-full bg-neutral-300 [grid-area:play]'
+        data-play
+      >
+        <div className='relative h-full w-full'>
+          <Image
+            src={funny}
+            alt={'Funny Image'}
+            fill={true}
+            className='p-8'
+            sizes='100%'
+          />
+        </div>
+      </div>
     </>
   );
 };

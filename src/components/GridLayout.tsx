@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useStore, StoreState } from '@/hooks/Store';
 
 const GridLayout = ({ children }: { children: React.ReactNode }) => {
-  const setStarted = useStore((state: StoreState) => state.setStart);
+  const { setStart } = useStore((state: StoreState) => state);
 
   const tl = useRef(
     gsap.timeline({
@@ -78,7 +78,7 @@ const GridLayout = ({ children }: { children: React.ReactNode }) => {
         .set('[data-menu]', {
           css: { transform: 'rotate(180deg) skew(360deg, 0deg)' },
           onComplete: () => {
-            setStarted();
+            setStart();
           },
         });
     });
@@ -90,14 +90,14 @@ const GridLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <main className='main-layout'>
-      <a
+      <Link
         className='inline-block self-center justify-self-center text-[3rem] font-bold no-underline opacity-0 [grid-area:logo]'
         aria-label='Wave logo homepage'
-        href='/#'
+        href='/'
         data-op
       >
         ~
-      </a>
+      </Link>
       <h2
         data-op
         className='line line--vertical pointer-events-none relative text-[1rem] font-semibold [grid-area:headtitle]'

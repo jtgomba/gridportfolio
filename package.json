@@ -26,6 +26,7 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -36,6 +37,7 @@
     "postcss": "^8",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
+    "sharp": "^0.32.6",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
