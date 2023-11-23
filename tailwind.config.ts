@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        termina: ['termina', 'sans-serif'],
-        dystopian: ['dystopian', 'sans-serif'],
+        termina: ['var(--font-termina)'],
+        dystopian: ['var(--font-dystopian)'],
       },
     },
   },

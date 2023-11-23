@@ -60,8 +60,8 @@ export default function Home() {
           data-op
           className='block opacity-0'
         >
-          I&apos;m a skilled software developer with experience in TypeScript
-          and JavaScript, and expertise in frameworks like React, Node.js, and
+          I&apos;m a skilled software developer with experience in TypeScript,
+          JavaScript and expertise in frameworks like React, Node.js, and
           Three.js. I&apos;m a quick learner and collaborate closely with
           clients to create efficient, scalable, and user-friendly solutions
           that solve real-world problems. Let&apos;s work together to bring your
