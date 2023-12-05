@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 import { useStore, StoreState } from '@/hooks/Store';
-import Form from './components/form';
+import Form from './_components/form';
 
 const Contact = () => {
   const started = useStore((state: StoreState) => state.started);
